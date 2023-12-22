@@ -11,233 +11,233 @@ on:
 
 name: main
 jobs:
-  # linux:
-  #   name: 'Linux (x64)'
-  #   container:
-  #     image: ubuntu:20.04
-  #   runs-on: ubuntu-latest
+  linux:
+    name: 'Linux (x64)'
+    container:
+      image: ubuntu:20.04
+    runs-on: ubuntu-latest
 
-  #   steps:
+    steps:
 
-  #   - name: Checkout
-  #     uses: actions/checkout@v4
-  #     with:
-  #       fetch-depth: 1
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
 
-  #   - name: Install dependencies
-  #     run: ./install.dependencies.sh
-  #     working-directory: build/linux-x64
+    - name: Install dependencies
+      run: ./install.dependencies.sh
+      working-directory: build/linux-x64
 
-  #   - name: Update ImageMagick.commit to latest commit
-  #     run: ./update.imagemagick.sh
-  #     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-  #     working-directory: src/ImageMagick
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.sh
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
 
-  #   - name: Clone ImageMagick libraries
-  #     run: ./checkout.sh linux ../../../artifacts
-  #     working-directory: src/ImageMagick
+    - name: Clone ImageMagick libraries
+      run: ./checkout.sh linux ../../../artifacts
+      working-directory: src/ImageMagick
 
-  #   - name: Build libraries
-  #     run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux x64
-  #     working-directory: src/ImageMagick/libraries
+    - name: Build libraries
+      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux x64
+      working-directory: src/ImageMagick/libraries
 
-  #   - name: Build ImageMagick
-  #     run: ../../../build/shared/build.ImageMagick.sh linux x64
-  #     working-directory: src/ImageMagick/libraries
+    - name: Build ImageMagick
+      run: ../../../build/shared/build.ImageMagick.sh linux x64
+      working-directory: src/ImageMagick/libraries
 
-  #   - name: Build Native
-  #     run: ../../build/shared/build.Native.sh linux x64
-  #     working-directory: src/Magick.Native
+    - name: Build Native
+      run: ../../build/shared/build.Native.sh linux x64
+      working-directory: src/Magick.Native
 
-  #   - name: Copy Native
-  #     run: ../../build/shared/copy.Native.sh ../../artifacts linux x64
-  #     working-directory: src/Magick.Native
+    - name: Copy Native
+      run: ../../build/shared/copy.Native.sh ../../artifacts linux x64
+      working-directory: src/Magick.Native
 
-  #   - name: Build ImageMagick
-  #     run: ../../../build/shared/build.ImageMagick.sh linux x64 OpenMP
-  #     working-directory: src/ImageMagick/libraries
+    - name: Build ImageMagick
+      run: ../../../build/shared/build.ImageMagick.sh linux x64 OpenMP
+      working-directory: src/ImageMagick/libraries
 
-  #   - name: Build Native
-  #     run: ../../build/shared/build.Native.sh linux x64 OpenMP
-  #     working-directory: src/Magick.Native
+    - name: Build Native
+      run: ../../build/shared/build.Native.sh linux x64 OpenMP
+      working-directory: src/Magick.Native
 
-  #   - name: Copy Native
-  #     run: ../../build/shared/copy.Native.sh ../../artifacts linux x64 OpenMP
-  #     working-directory: src/Magick.Native
+    - name: Copy Native
+      run: ../../build/shared/copy.Native.sh ../../artifacts linux x64 OpenMP
+      working-directory: src/Magick.Native
 
-  #   - name: Upload library
-  #     uses: actions/upload-artifact@v3
-  #     with:
-  #       name: linux
-  #       path: artifacts
+    - name: Upload library
+      uses: actions/upload-artifact@v3
+      with:
+        name: linux
+        path: artifacts
 
-  # linux_musl:
-  #   name: 'Linux musl (x64)'
-  #   container:
-  #     image: alpine:3.12
-  #   runs-on: ubuntu-latest
+  linux_musl:
+    name: 'Linux musl (x64)'
+    container:
+      image: alpine:3.12
+    runs-on: ubuntu-latest
 
-  #   steps:
+    steps:
 
-  #   - name: Checkout
-  #     uses: actions/checkout@v4
-  #     with:
-  #       fetch-depth: 1
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
 
-  #   - name: Install dependencies
-  #     run: ./install.dependencies.sh
-  #     working-directory: build/linux-musl-x64
+    - name: Install dependencies
+      run: ./install.dependencies.sh
+      working-directory: build/linux-musl-x64
 
-  #   - name: Update ImageMagick.commit to latest commit
-  #     run: ./update.imagemagick.sh
-  #     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-  #     working-directory: src/ImageMagick
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.sh
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
 
-  #   - name: Clone ImageMagick libraries
-  #     run: ./checkout.sh linux ../../../artifacts
-  #     working-directory: src/ImageMagick
+    - name: Clone ImageMagick libraries
+      run: ./checkout.sh linux ../../../artifacts
+      working-directory: src/ImageMagick
 
-  #   - name: Build libraries
-  #     run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux-musl x64
-  #     working-directory: src/ImageMagick/libraries
+    - name: Build libraries
+      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux-musl x64
+      working-directory: src/ImageMagick/libraries
 
-  #   - name: Build ImageMagick
-  #     run: ../../../build/shared/build.ImageMagick.sh linux-musl x64
-  #     working-directory: src/ImageMagick/libraries
+    - name: Build ImageMagick
+      run: ../../../build/shared/build.ImageMagick.sh linux-musl x64
+      working-directory: src/ImageMagick/libraries
 
-  #   - name: Build Native
-  #     run: ../../build/shared/build.Native.sh linux-musl x64
-  #     working-directory: src/Magick.Native
+    - name: Build Native
+      run: ../../build/shared/build.Native.sh linux-musl x64
+      working-directory: src/Magick.Native
 
-  #   - name: Copy Native
-  #     run: ../../build/shared/copy.Native.sh ../../artifacts linux-musl x64
-  #     working-directory: src/Magick.Native
+    - name: Copy Native
+      run: ../../build/shared/copy.Native.sh ../../artifacts linux-musl x64
+      working-directory: src/Magick.Native
 
-  #   - name: Build ImageMagick
-  #     run: ../../../build/shared/build.ImageMagick.sh linux-musl x64 OpenMP
-  #     working-directory: src/ImageMagick/libraries
+    - name: Build ImageMagick
+      run: ../../../build/shared/build.ImageMagick.sh linux-musl x64 OpenMP
+      working-directory: src/ImageMagick/libraries
 
-  #   - name: Build Native
-  #     run: ../../build/shared/build.Native.sh linux-musl x64 OpenMP
-  #     working-directory: src/Magick.Native
+    - name: Build Native
+      run: ../../build/shared/build.Native.sh linux-musl x64 OpenMP
+      working-directory: src/Magick.Native
 
-  #   - name: Copy Native
-  #     run: ../../build/shared/copy.Native.sh ../../artifacts linux-musl x64 OpenMP
-  #     working-directory: src/Magick.Native
+    - name: Copy Native
+      run: ../../build/shared/copy.Native.sh ../../artifacts linux-musl x64 OpenMP
+      working-directory: src/Magick.Native
 
-  #   - name: Upload library
-  #     uses: actions/upload-artifact@v3
-  #     with:
-  #       name: linux-musl
-  #       path: artifacts
+    - name: Upload library
+      uses: actions/upload-artifact@v3
+      with:
+        name: linux-musl
+        path: artifacts
 
-  # linux_arm64:
-  #   name: 'Linux (arm64)'
-  #   container:
-  #     image: ubuntu:20.04
-  #   runs-on: ubuntu-latest
+  linux_arm64:
+    name: 'Linux (arm64)'
+    container:
+      image: ubuntu:20.04
+    runs-on: ubuntu-latest
 
-  #   steps:
+    steps:
 
-  #   - name: Checkout
-  #     uses: actions/checkout@v4
-  #     with:
-  #       fetch-depth: 1
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
 
-  #   - name: Install dependencies
-  #     run: ./install.dependencies.sh
-  #     working-directory: build/linux-arm64
+    - name: Install dependencies
+      run: ./install.dependencies.sh
+      working-directory: build/linux-arm64
 
-  #   - name: Update ImageMagick.commit to latest commit
-  #     run: ./update.imagemagick.sh
-  #     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-  #     working-directory: src/ImageMagick
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.sh
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
 
-  #   - name: Clone ImageMagick libraries
-  #     run: ./checkout.sh linux ../../../artifacts
-  #     working-directory: src/ImageMagick
+    - name: Clone ImageMagick libraries
+      run: ./checkout.sh linux ../../../artifacts
+      working-directory: src/ImageMagick
 
-  #   - name: Build libraries
-  #     run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux arm64
-  #     working-directory: src/ImageMagick/libraries
+    - name: Build libraries
+      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries linux arm64
+      working-directory: src/ImageMagick/libraries
 
-  #   - name: Build ImageMagick
-  #     run: ../../../build/shared/build.ImageMagick.sh linux arm64
-  #     working-directory: src/ImageMagick/libraries
+    - name: Build ImageMagick
+      run: ../../../build/shared/build.ImageMagick.sh linux arm64
+      working-directory: src/ImageMagick/libraries
 
-  #   - name: Build Native
-  #     run: ../../build/shared/build.Native.sh linux arm64
-  #     working-directory: src/Magick.Native
+    - name: Build Native
+      run: ../../build/shared/build.Native.sh linux arm64
+      working-directory: src/Magick.Native
 
-  #   - name: Copy Native
-  #     run: ../../build/shared/copy.Native.sh ../../artifacts linux arm64
-  #     working-directory: src/Magick.Native
+    - name: Copy Native
+      run: ../../build/shared/copy.Native.sh ../../artifacts linux arm64
+      working-directory: src/Magick.Native
 
-  #   - name: Build ImageMagick
-  #     run: ../../../build/shared/build.ImageMagick.sh linux arm64 OpenMP
-  #     working-directory: src/ImageMagick/libraries
+    - name: Build ImageMagick
+      run: ../../../build/shared/build.ImageMagick.sh linux arm64 OpenMP
+      working-directory: src/ImageMagick/libraries
 
-  #   - name: Build Native
-  #     run: ../../build/shared/build.Native.sh linux arm64 OpenMP
-  #     working-directory: src/Magick.Native
+    - name: Build Native
+      run: ../../build/shared/build.Native.sh linux arm64 OpenMP
+      working-directory: src/Magick.Native
 
-  #   - name: Copy Native
-  #     run: ../../build/shared/copy.Native.sh ../../artifacts linux arm64 OpenMP
-  #     working-directory: src/Magick.Native
+    - name: Copy Native
+      run: ../../build/shared/copy.Native.sh ../../artifacts linux arm64 OpenMP
+      working-directory: src/Magick.Native
 
-  #   - name: Upload library
-  #     uses: actions/upload-artifact@v3
-  #     with:
-  #       name: linux-arm64
-  #       path: artifacts
+    - name: Upload library
+      uses: actions/upload-artifact@v3
+      with:
+        name: linux-arm64
+        path: artifacts
 
-  # macos:
-  #   name: 'MacOS (x64)'
-  #   runs-on: macos-11
+  macos:
+    name: 'MacOS (x64)'
+    runs-on: macos-11
 
-  #   steps:
+    steps:
 
-  #   - name: Checkout
-  #     uses: actions/checkout@v4
-  #     with:
-  #       fetch-depth: 1
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
 
-  #   - name: Install dependencies
-  #     run: ./install.dependencies.sh
-  #     working-directory: build/macos-x64
+    - name: Install dependencies
+      run: ./install.dependencies.sh
+      working-directory: build/macos-x64
 
-  #   - name: Update ImageMagick.commit to latest commit
-  #     run: ./update.imagemagick.sh
-  #     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-  #     working-directory: src/ImageMagick
+    - name: Update ImageMagick.commit to latest commit
+      run: ./update.imagemagick.sh
+      if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+      working-directory: src/ImageMagick
 
-  #   - name: Clone ImageMagick libraries
-  #     run: ./checkout.sh macos ../../../artifacts
-  #     working-directory: src/ImageMagick
+    - name: Clone ImageMagick libraries
+      run: ./checkout.sh macos ../../../artifacts
+      working-directory: src/ImageMagick
 
-  #   - name: Build libraries
-  #     run: ../../../build/shared/build.Libraries.sh ../../../build/libraries macos x64
-  #     working-directory: src/ImageMagick/libraries
+    - name: Build libraries
+      run: ../../../build/shared/build.Libraries.sh ../../../build/libraries macos x64
+      working-directory: src/ImageMagick/libraries
 
-  #   - name: Build ImageMagick
-  #     run: ../../../build/shared/build.ImageMagick.sh macos x64
-  #     working-directory: src/ImageMagick/libraries
+    - name: Build ImageMagick
+      run: ../../../build/shared/build.ImageMagick.sh macos x64
+      working-directory: src/ImageMagick/libraries
 
-  #   - name: Build Native
-  #     run: ../../build/shared/build.Native.sh macos x64
-  #     working-directory: src/Magick.Native
+    - name: Build Native
+      run: ../../build/shared/build.Native.sh macos x64
+      working-directory: src/Magick.Native
 
-  #   - name: Copy Native
-  #     run: ../../build/shared/copy.Native.sh ../../artifacts macos x64
-  #     working-directory: src/Magick.Native
+    - name: Copy Native
+      run: ../../build/shared/copy.Native.sh ../../artifacts macos x64
+      working-directory: src/Magick.Native
 
-  #   - name: Upload library
-  #     uses: actions/upload-artifact@v3
-  #     with:
-  #       name: macos-x64
-  #       path: artifacts
+    - name: Upload library
+      uses: actions/upload-artifact@v3
+      with:
+        name: macos-x64
+        path: artifacts
 
-  # macos_arm64:
+  macos_arm64:
     name: 'MacOS (arm64)'
     runs-on: macos-11
 
@@ -415,269 +415,269 @@ jobs:
         name: wasm
         path: artifacts
 
-  # verify_linux:
-  #   name: 'Verify Linux (x64)'
-  #   needs:
-  #     - linux
-  #   runs-on: ubuntu-latest
+  verify_linux:
+    name: 'Verify Linux (x64)'
+    needs:
+      - linux
+    runs-on: ubuntu-latest
 
-  #   strategy:
-  #     matrix:
-  #       image:
-  #         - 'ubuntu:16.04'
-  #         - 'ubuntu:18.04'
-  #         - 'ubuntu:20.04'
-  #         - 'ubuntu:latest'
-  #         - 'tgagor/centos:stream8'
-  #         - 'tgagor/centos:stream9'
-  #         - 'mcr.microsoft.com/dotnet/aspnet:latest'
-  #         - 'mcr.microsoft.com/dotnet/runtime:6.0'
-  #         - 'mcr.microsoft.com/dotnet/runtime:latest'
-  #         - 'amazon/aws-lambda-dotnet:6'
-  #         - 'public.ecr.aws/lambda/dotnet:6-x86_64'
+    strategy:
+      matrix:
+        image:
+          - 'ubuntu:16.04'
+          - 'ubuntu:18.04'
+          - 'ubuntu:20.04'
+          - 'ubuntu:latest'
+          - 'tgagor/centos:stream8'
+          - 'tgagor/centos:stream9'
+          - 'mcr.microsoft.com/dotnet/aspnet:latest'
+          - 'mcr.microsoft.com/dotnet/runtime:6.0'
+          - 'mcr.microsoft.com/dotnet/runtime:latest'
+          - 'amazon/aws-lambda-dotnet:6'
+          - 'public.ecr.aws/lambda/dotnet:6-x86_64'
 
-  #   container:
-  #     image: ${{ matrix.image }}
+    container:
+      image: ${{ matrix.image }}
 
-  #   steps:
+    steps:
 
-  #   - name: Install dependencies
-  #     run: |
-  #       if [ -f "/bin/yum" ]; then
-  #         yum install -y gzip tar
-  #       fi
+    - name: Install dependencies
+      run: |
+        if [ -f "/bin/yum" ]; then
+          yum install -y gzip tar
+        fi
 
-  #   - name: Checkout
-  #     uses: actions/checkout@v3
-  #     with:
-  #       fetch-depth: 1
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
 
-  #   - name: Download linux library
-  #     uses: actions/download-artifact@v3
-  #     with:
-  #       name: linux
+    - name: Download linux library
+      uses: actions/download-artifact@v3
+      with:
+        name: linux
 
-  #   - name: Verify Native
-  #     run: build/shared/verify.Native.sh . linux x64
+    - name: Verify Native
+      run: build/shared/verify.Native.sh . linux x64
 
-  # verify_linux_openmp:
-  #   name: 'Verify Linux (x64) OpenMP'
-  #   needs:
-  #     - linux
-  #   runs-on: ubuntu-latest
+  verify_linux_openmp:
+    name: 'Verify Linux (x64) OpenMP'
+    needs:
+      - linux
+    runs-on: ubuntu-latest
 
-  #   strategy:
-  #     matrix:
-  #       image:
-  #         - 'ubuntu:18.04'
-  #         - 'ubuntu:20.04'
-  #         - 'ubuntu:latest'
-  #         - 'tgagor/centos:stream8'
-  #         - 'tgagor/centos:stream9'
-  #         - 'mcr.microsoft.com/dotnet/aspnet:latest'
-  #         - 'mcr.microsoft.com/dotnet/runtime:6.0'
-  #         - 'mcr.microsoft.com/dotnet/runtime:latest'
-  #         - 'amazon/aws-lambda-dotnet:6'
-  #         - 'public.ecr.aws/lambda/dotnet:6-x86_64'
+    strategy:
+      matrix:
+        image:
+          - 'ubuntu:18.04'
+          - 'ubuntu:20.04'
+          - 'ubuntu:latest'
+          - 'tgagor/centos:stream8'
+          - 'tgagor/centos:stream9'
+          - 'mcr.microsoft.com/dotnet/aspnet:latest'
+          - 'mcr.microsoft.com/dotnet/runtime:6.0'
+          - 'mcr.microsoft.com/dotnet/runtime:latest'
+          - 'amazon/aws-lambda-dotnet:6'
+          - 'public.ecr.aws/lambda/dotnet:6-x86_64'
 
-  #   container:
-  #     image: ${{ matrix.image }}
+    container:
+      image: ${{ matrix.image }}
 
-  #   steps:
+    steps:
 
-  #   - name: Install dependencies
-  #     run: |
-  #       if [ -f "/bin/yum" ]; then
-  #         yum install -y gzip tar
-  #       fi
+    - name: Install dependencies
+      run: |
+        if [ -f "/bin/yum" ]; then
+          yum install -y gzip tar
+        fi
 
-  #   - name: Checkout
-  #     uses: actions/checkout@v3
-  #     with:
-  #       fetch-depth: 1
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 1
 
-  #   - name: Download linux library
-  #     uses: actions/download-artifact@v3
-  #     with:
-  #       name: linux
+    - name: Download linux library
+      uses: actions/download-artifact@v3
+      with:
+        name: linux
 
-  #   - name: Verify Native
-  #     run: build/shared/verify.Native.sh . linux x64 OpenMP
+    - name: Verify Native
+      run: build/shared/verify.Native.sh . linux x64 OpenMP
 
-  # verify_linux_musl:
-  #   name: 'Verify Linux musl (x64)'
-  #   needs:
-  #     - linux_musl
-  #   runs-on: ubuntu-latest
+  verify_linux_musl:
+    name: 'Verify Linux musl (x64)'
+    needs:
+      - linux_musl
+    runs-on: ubuntu-latest
 
-  #   strategy:
-  #     matrix:
-  #       image:
-  #         - 'alpine:latest'
-  #         - 'mcr.microsoft.com/dotnet/aspnet:8.0-alpine'
-  #         - 'mcr.microsoft.com/dotnet/runtime:6.0-alpine'
-  #         - 'mcr.microsoft.com/dotnet/runtime:8.0-alpine'
+    strategy:
+      matrix:
+        image:
+          - 'alpine:latest'
+          - 'mcr.microsoft.com/dotnet/aspnet:8.0-alpine'
+          - 'mcr.microsoft.com/dotnet/runtime:6.0-alpine'
+          - 'mcr.microsoft.com/dotnet/runtime:8.0-alpine'
 
-  #   container:
-  #     image: ${{ matrix.image }}
+    container:
+      image: ${{ matrix.image }}
 
-  #   steps:
+    steps:
 
-  #   - name: Checkout
-  #     uses: actions/checkout@v4
-  #     with:
-  #       fetch-depth: 1
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
 
-  #   - name: Download linux-musl library
-  #     uses: actions/download-artifact@v3
-  #     with:
-  #       name: linux-musl
+    - name: Download linux-musl library
+      uses: actions/download-artifact@v3
+      with:
+        name: linux-musl
 
-  #   - name: Verify Native
-  #     run: |
-  #       apk update
-  #       apk add bash
-  #       build/shared/verify.Native.sh . linux-musl x64
+    - name: Verify Native
+      run: |
+        apk update
+        apk add bash
+        build/shared/verify.Native.sh . linux-musl x64
 
-  # verify_linux_musl_openmp:
-  #   name: 'Verify Linux musl (x64) OpenMP'
-  #   needs:
-  #     - linux_musl
-  #   runs-on: ubuntu-latest
+  verify_linux_musl_openmp:
+    name: 'Verify Linux musl (x64) OpenMP'
+    needs:
+      - linux_musl
+    runs-on: ubuntu-latest
 
-  #   strategy:
-  #     matrix:
-  #       image:
-  #         - 'alpine:latest'
-  #         - 'mcr.microsoft.com/dotnet/aspnet:8.0-alpine'
-  #         - 'mcr.microsoft.com/dotnet/runtime:6.0-alpine'
-  #         - 'mcr.microsoft.com/dotnet/runtime:8.0-alpine'
+    strategy:
+      matrix:
+        image:
+          - 'alpine:latest'
+          - 'mcr.microsoft.com/dotnet/aspnet:8.0-alpine'
+          - 'mcr.microsoft.com/dotnet/runtime:6.0-alpine'
+          - 'mcr.microsoft.com/dotnet/runtime:8.0-alpine'
 
-  #   container:
-  #     image: ${{ matrix.image }}
+    container:
+      image: ${{ matrix.image }}
 
-  #   steps:
+    steps:
 
-  #   - name: Checkout
-  #     uses: actions/checkout@v4
-  #     with:
-  #       fetch-depth: 1
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
 
-  #   - name: Download linux-musl library
-  #     uses: actions/download-artifact@v3
-  #     with:
-  #       name: linux-musl
+    - name: Download linux-musl library
+      uses: actions/download-artifact@v3
+      with:
+        name: linux-musl
 
-  #   - name: Verify Native
-  #     run: |
-  #       apk update
-  #       apk add bash
-  #       build/shared/verify.Native.sh . linux-musl x64 OpenMP
+    - name: Verify Native
+      run: |
+        apk update
+        apk add bash
+        build/shared/verify.Native.sh . linux-musl x64 OpenMP
 
-  # verify_linux_arm64:
-  #   name: 'Verify Linux (arm64)'
-  #   needs:
-  #     - linux_arm64
-  #   runs-on: ubuntu-latest
+  verify_linux_arm64:
+    name: 'Verify Linux (arm64)'
+    needs:
+      - linux_arm64
+    runs-on: ubuntu-latest
 
-  #   strategy:
-  #     matrix:
-  #       image:
-  #         - 'mcr.microsoft.com/dotnet/runtime:6.0-focal-arm64v8'
-  #         - 'public.ecr.aws/lambda/dotnet:6-arm64'
+    strategy:
+      matrix:
+        image:
+          - 'mcr.microsoft.com/dotnet/runtime:6.0-focal-arm64v8'
+          - 'public.ecr.aws/lambda/dotnet:6-arm64'
 
-  #   steps:
+    steps:
 
-  #   - name: Checkout
-  #     uses: actions/checkout@v4
-  #     with:
-  #       fetch-depth: 1
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
 
-  #   - name: Download linux-arm64 library
-  #     uses: actions/download-artifact@v3
-  #     with:
-  #       name: linux-arm64
+    - name: Download linux-arm64 library
+      uses: actions/download-artifact@v3
+      with:
+        name: linux-arm64
 
-  #   - name: Set up QEMU
-  #     uses: docker/setup-qemu-action@master
-  #     with:
-  #       platforms: arm64
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@master
+      with:
+        platforms: arm64
 
-  #   - name: Verify Native
-  #     run: |
-  #       export path=$(pwd)
-  #       docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh /Magick.Native linux arm64
+    - name: Verify Native
+      run: |
+        export path=$(pwd)
+        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh /Magick.Native linux arm64
 
-  # verify_linux_arm64_openmp:
-  #   name: 'Verify Linux (arm64) OpenMP'
-  #   needs:
-  #     - linux_arm64
-  #   runs-on: ubuntu-latest
+  verify_linux_arm64_openmp:
+    name: 'Verify Linux (arm64) OpenMP'
+    needs:
+      - linux_arm64
+    runs-on: ubuntu-latest
 
-  #   strategy:
-  #     matrix:
-  #       image:
-  #         - 'mcr.microsoft.com/dotnet/runtime:6.0-focal-arm64v8'
-  #         - 'public.ecr.aws/lambda/dotnet:6-arm64'
+    strategy:
+      matrix:
+        image:
+          - 'mcr.microsoft.com/dotnet/runtime:6.0-focal-arm64v8'
+          - 'public.ecr.aws/lambda/dotnet:6-arm64'
 
-  #   steps:
+    steps:
 
-  #   - name: Checkout
-  #     uses: actions/checkout@v4
-  #     with:
-  #       fetch-depth: 1
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
 
-  #   - name: Download linux-arm64 library
-  #     uses: actions/download-artifact@v3
-  #     with:
-  #       name: linux-arm64
+    - name: Download linux-arm64 library
+      uses: actions/download-artifact@v3
+      with:
+        name: linux-arm64
 
-  #   - name: Set up QEMU
-  #     uses: docker/setup-qemu-action@master
-  #     with:
-  #       platforms: arm64
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@master
+      with:
+        platforms: arm64
 
-  #   - name: Verify Native
-  #     run: |
-  #       export path=$(pwd)
-  #       docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh /Magick.Native linux arm64 OpenMP
+    - name: Verify Native
+      run: |
+        export path=$(pwd)
+        docker run -v $path:/Magick.Native mcr.microsoft.com/dotnet/sdk:6.0-focal-arm64v8 Magick.Native/build/shared/verify.Native.sh /Magick.Native linux arm64 OpenMP
 
-  # verify_macos:
-  #   name: 'Verify MacOS'
-  #   needs:
-  #     - macos
-  #     - macos_arm64
-  #   strategy:
-  #     matrix:
-  #       os: [macos-11, macos-12]
-  #       arch: [x64, arm64]
-  #   runs-on: ${{ matrix.os }}
+  verify_macos:
+    name: 'Verify MacOS'
+    needs:
+      - macos
+      - macos_arm64
+    strategy:
+      matrix:
+        os: [macos-11, macos-12]
+        arch: [x64, arm64]
+    runs-on: ${{ matrix.os }}
 
-  #   steps:
+    steps:
 
-  #   - name: Checkout
-  #     uses: actions/checkout@v4
-  #     with:
-  #       fetch-depth: 1
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
 
-  #   - name: Download macos library
-  #     uses: actions/download-artifact@v3
-  #     with:
-  #       name: macos-${{ matrix.arch }}
+    - name: Download macos library
+      uses: actions/download-artifact@v3
+      with:
+        name: macos-${{ matrix.arch }}
 
-  #   - name: Verify MacOS
-  #     run: build/shared/verify.Native.MacOS.sh . macos ${{ matrix.arch }}
+    - name: Verify MacOS
+      run: build/shared/verify.Native.MacOS.sh . macos ${{ matrix.arch }}
 
   metadata:
     name: 'Metadata'
     needs:
-      # - verify_linux
-      # - verify_linux_openmp
-      # - verify_linux_musl
-      # - verify_linux_musl_openmp
-      # - verify_linux_arm64
-      # - verify_linux_arm64_openmp
-      # - verify_macos
+      - verify_linux
+      - verify_linux_openmp
+      - verify_linux_musl
+      - verify_linux_musl_openmp
+      - verify_linux_arm64
+      - verify_linux_arm64_openmp
+      - verify_macos
       - windows
       - wasm
     runs-on: windows-latest
@@ -712,7 +712,7 @@ jobs:
         name: metadata
         path: artifacts
 
-  # publish_dotnet:
+  publish_dotnet:
     name: 'Publish .NET library'
     needs:
       - metadata
