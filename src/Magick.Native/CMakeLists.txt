@@ -62,29 +62,29 @@ elseif (NOT PLATFORM STREQUAL "WASM")
     endif()
 endif()
 
-set(LIBAOM ${LIB_DIR}/libaom.a)
+# set(LIBAOM ${LIB_DIR}/libaom.a)
 set(LIBDEFLATE ${LIB_DIR}/libdeflate.a)
 set(LIBGLIB ${LIB_DIR}/libgio-2.0.a ${LIB_DIR}/libgobject-2.0.a ${LIB_DIR}/libgmodule-2.0.a ${LIB_DIR}/libffi.a ${LIB_DIR}/libglib-2.0.a)
-set(LIBHEIF ${LIB_DIR}/libheif.a ${LIBAOM} ${LIB_DIR}/libde265.a)
+# set(LIBHEIF ${LIB_DIR}/libheif.a ${LIBAOM} ${LIB_DIR}/libde265.a)
 set(LIBJPEG ${LIB_DIR}/libturbojpeg.a)
 set(LIBJPEGXL ${LIB_DIR}/libjxl.a ${LIB_DIR}/libjxl_threads.a ${LIB_DIR}/libbrotlienc.a ${LIB_DIR}/libbrotlidec.a ${LIB_DIR}/libbrotlicommon.a ${LIB_DIR}/libhwy.a)
 set(LIBLCMS ${LIB_DIR}/liblcms2.a)
 set(LIBLQR ${LIB_DIR}/liblqr-1.a)
 set(LIBOPENJPEG ${LIB_DIR}/libopenjp2.a)
 set(LIBPNG ${LIB_DIR}/libpng.a)
-set(LIBRAW ${LIB_DIR}/libraw_r.a)
-set(LIBTIFF ${LIB_DIR}/libtiff.a)
+# set(LIBRAW ${LIB_DIR}/libraw_r.a)
+# set(LIBTIFF ${LIB_DIR}/libtiff.a)
 set(LIBWEBP ${LIB_DIR}/libwebpmux.a ${LIB_DIR}/libwebpdemux.a ${LIB_DIR}/libwebp.a ${LIB_DIR}/libsharpyuv.a)
 set(LIBXML ${LIB_DIR}/libxml2.a)
 set(LIBZ ${LIB_DIR}/libz.a)
 
-set(LIBEXR_VERSION 3_2)
+# set(LIBEXR_VERSION 3_2)
 set(LIBMATH_VERSION 3_1)
 if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    set(LIBEXR ${LIB_DIR}/libdeflate.a ${LIB_DIR}/libOpenEXR-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libOpenEXRUtil-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libOpenEXRCore-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libImath-${LIBMATH_VERSION}_d.a ${LIB_DIR}/libIex-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libIlmThread-${LIBEXR_VERSION}_d.a)
+    # set(LIBEXR ${LIB_DIR}/libdeflate.a ${LIB_DIR}/libOpenEXR-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libOpenEXRUtil-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libOpenEXRCore-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libImath-${LIBMATH_VERSION}_d.a ${LIB_DIR}/libIex-${LIBEXR_VERSION}_d.a ${LIB_DIR}/libIlmThread-${LIBEXR_VERSION}_d.a)
     set(LIBFREETYPE ${LIB_DIR}/libfreetyped.a)
 else()
-    set(LIBEXR ${LIB_DIR}/libdeflate.a ${LIB_DIR}/libOpenEXR-${LIBEXR_VERSION}.a ${LIB_DIR}/libOpenEXRUtil-${LIBEXR_VERSION}.a ${LIB_DIR}/libOpenEXRCore-${LIBEXR_VERSION}.a ${LIB_DIR}/libImath-${LIBMATH_VERSION}.a ${LIB_DIR}/libIex-${LIBEXR_VERSION}.a ${LIB_DIR}/libIlmThread-${LIBEXR_VERSION}.a)
+    # set(LIBEXR ${LIB_DIR}/libdeflate.a ${LIB_DIR}/libOpenEXR-${LIBEXR_VERSION}.a ${LIB_DIR}/libOpenEXRUtil-${LIBEXR_VERSION}.a ${LIB_DIR}/libOpenEXRCore-${LIBEXR_VERSION}.a ${LIB_DIR}/libImath-${LIBMATH_VERSION}.a ${LIB_DIR}/libIex-${LIBEXR_VERSION}.a ${LIB_DIR}/libIlmThread-${LIBEXR_VERSION}.a)
     set(LIBFREETYPE ${LIB_DIR}/libfreetype.a)
 endif()
 
@@ -101,7 +101,7 @@ target_link_libraries(
     ${LIB_DIR}/libMagickWand-7.${QUANTUM_NAME}.a
     ${LIB_DIR}/libMagickCore-7.${QUANTUM_NAME}.a
 
-    ${LIBEXR}
+    # ${LIBEXR}
     ${LIBDEFLATE}
     ${LIBICONV}
     ${LIBINTL}
@@ -119,12 +119,12 @@ target_link_libraries(
     ${LIBXML}
     ${LIBPNG}
     ${LIBJPEG}
-    ${LIBTIFF}
+    # ${LIBTIFF}
     ${LIBWEBP}
     ${LIBOPENJPEG}
     ${LIBLCMS}
-    ${LIBHEIF}
-    ${LIBRAW}
+    # ${LIBHEIF}
+    # ${LIBRAW}
     ${LIBZIP}
     ${LIBLZMA}
     ${LIBBZIP2}
