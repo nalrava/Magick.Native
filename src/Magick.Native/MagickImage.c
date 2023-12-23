@@ -4,7 +4,7 @@
 #include "Stdafx.h"
 #include "MagickImage.h"
 #include "Colors/MagickColor.h"
-// #include "Settings/DrawingSettings.h"
+#include "Settings/DrawingSettings.h"
 #include "Settings/QuantizeSettings.h"
 #include "Types/PrimaryInfo.h"
 #include "Types/MagickRectangle.h"
@@ -60,32 +60,32 @@ static inline void RemoveFrames(Image *image)
   }
 }
 
-// static inline void SetTransformRotation(DrawInfo *instance, const double angle)
-// {
-//   AffineMatrix
-//     affine,
-//     current;
+static inline void SetTransformRotation(DrawInfo *instance, const double angle)
+{
+  AffineMatrix
+    affine,
+    current;
 
-//   affine.sx = 1.0;
-//   affine.rx = 0.0;
-//   affine.ry = 0.0;
-//   affine.sy = 1.0;
-//   affine.tx = 0.0;
-//   affine.ty = 0.0;
+  affine.sx = 1.0;
+  affine.rx = 0.0;
+  affine.ry = 0.0;
+  affine.sy = 1.0;
+  affine.tx = 0.0;
+  affine.ty = 0.0;
 
-//   current = instance->affine;
-//   affine.sx = cos(DegreesToRadians(fmod(angle, 360.0)));
-//   affine.rx = (-sin(DegreesToRadians(fmod(angle, 360.0))));
-//   affine.ry = sin(DegreesToRadians(fmod(angle, 360.0)));
-//   affine.sy = cos(DegreesToRadians(fmod(angle, 360.0)));
+  current = instance->affine;
+  affine.sx = cos(DegreesToRadians(fmod(angle, 360.0)));
+  affine.rx = (-sin(DegreesToRadians(fmod(angle, 360.0))));
+  affine.ry = sin(DegreesToRadians(fmod(angle, 360.0)));
+  affine.sy = cos(DegreesToRadians(fmod(angle, 360.0)));
 
-//   instance->affine.sx = current.sx * affine.sx + current.ry * affine.rx;
-//   instance->affine.rx = current.rx * affine.sx + current.sy * affine.rx;
-//   instance->affine.ry = current.sx * affine.ry + current.ry * affine.sy;
-//   instance->affine.sy = current.rx * affine.ry + current.sy * affine.sy;
-//   instance->affine.tx = current.sx * affine.tx + current.ry * affine.ty + current.tx;
-//   instance->affine.ty = current.rx * affine.tx + current.sy * affine.ty + current.ty;
-// }
+  instance->affine.sx = current.sx * affine.sx + current.ry * affine.rx;
+  instance->affine.rx = current.rx * affine.sx + current.sy * affine.rx;
+  instance->affine.ry = current.sx * affine.ry + current.ry * affine.sy;
+  instance->affine.sy = current.rx * affine.ry + current.sy * affine.sy;
+  instance->affine.tx = current.sx * affine.tx + current.ry * affine.ty + current.tx;
+  instance->affine.ty = current.rx * affine.tx + current.sy * affine.ty + current.ty;
+}
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Create(const ImageInfo *settings, ExceptionInfo **exception)
 {
@@ -744,45 +744,45 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AffineTransform(Image *instance, const d
   return image;
 }
 
-// MAGICK_NATIVE_EXPORT void MagickImage_Annotate(Image *instance, const DrawInfo *settings, char *text, char *boundingArea, const size_t gravity, const double angle, ExceptionInfo **exception)
-// {
-//   DrawInfo
-//     *drawInfo;
+MAGICK_NATIVE_EXPORT void MagickImage_Annotate(Image *instance, const DrawInfo *settings, char *text, char *boundingArea, const size_t gravity, const double angle, ExceptionInfo **exception)
+{
+  DrawInfo
+    *drawInfo;
 
-//   drawInfo = CloneDrawInfo((const ImageInfo *) NULL, settings);
-//   drawInfo->text = DestroyString(drawInfo->text);
-//   drawInfo->text = text;
-//   drawInfo->geometry = DestroyString(drawInfo->geometry);
-//   drawInfo->geometry = boundingArea;
-//   drawInfo->gravity = (GravityType) gravity;
+  drawInfo = CloneDrawInfo((const ImageInfo *) NULL, settings);
+  drawInfo->text = DestroyString(drawInfo->text);
+  drawInfo->text = text;
+  drawInfo->geometry = DestroyString(drawInfo->geometry);
+  drawInfo->geometry = boundingArea;
+  drawInfo->gravity = (GravityType) gravity;
 
-//   if (angle != 0.0)
-//     SetTransformRotation(drawInfo, angle);
+  if (angle != 0.0)
+    SetTransformRotation(drawInfo, angle);
 
-//   MAGICK_NATIVE_GET_EXCEPTION;
-//   AnnotateImage(instance, drawInfo, exceptionInfo);
-//   drawInfo->text = (char *) NULL;
-//   drawInfo->geometry = (char *) NULL;
-//   DestroyDrawInfo(drawInfo);
-//   MAGICK_NATIVE_SET_EXCEPTION;
-// }
+  MAGICK_NATIVE_GET_EXCEPTION;
+  AnnotateImage(instance, drawInfo, exceptionInfo);
+  drawInfo->text = (char *) NULL;
+  drawInfo->geometry = (char *) NULL;
+  DestroyDrawInfo(drawInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+}
 
-// MAGICK_NATIVE_EXPORT void MagickImage_AnnotateGravity(Image *instance, const DrawInfo *settings, char *text, const size_t gravity, ExceptionInfo **exception)
-// {
-//   DrawInfo
-//     *drawInfo;
+MAGICK_NATIVE_EXPORT void MagickImage_AnnotateGravity(Image *instance, const DrawInfo *settings, char *text, const size_t gravity, ExceptionInfo **exception)
+{
+  DrawInfo
+    *drawInfo;
 
-//   drawInfo = CloneDrawInfo((const ImageInfo *) NULL, settings);
-//   drawInfo->text = DestroyString(drawInfo->text);
-//   drawInfo->text = text;
-//   drawInfo->gravity = (GravityType) gravity;
+  drawInfo = CloneDrawInfo((const ImageInfo *) NULL, settings);
+  drawInfo->text = DestroyString(drawInfo->text);
+  drawInfo->text = text;
+  drawInfo->gravity = (GravityType) gravity;
 
-//   MAGICK_NATIVE_GET_EXCEPTION;
-//   AnnotateImage(instance, drawInfo, exceptionInfo);
-//   drawInfo->text = (char *) NULL;
-//   DestroyDrawInfo(drawInfo);
-//   MAGICK_NATIVE_SET_EXCEPTION;
-// }
+  MAGICK_NATIVE_GET_EXCEPTION;
+  AnnotateImage(instance, drawInfo, exceptionInfo);
+  drawInfo->text = (char *) NULL;
+  DestroyDrawInfo(drawInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+}
 
 MAGICK_NATIVE_EXPORT void MagickImage_AutoGamma(Image *instance, const size_t channels, ExceptionInfo **exception)
 {
@@ -1354,12 +1354,12 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Flip(const Image *instance, ExceptionInf
   return image;
 }
 
-// MAGICK_NATIVE_EXPORT void MagickImage_FloodFill(Image *instance, const DrawInfo *settings, const ssize_t x, const ssize_t y, const PixelInfo *target, const MagickBooleanType invert, ExceptionInfo **exception)
-// {
-//   MAGICK_NATIVE_GET_EXCEPTION;
-//   FloodfillPaintImage(instance, settings, target, x, y, invert, exceptionInfo);
-//   MAGICK_NATIVE_SET_EXCEPTION;
-// }
+MAGICK_NATIVE_EXPORT void MagickImage_FloodFill(Image *instance, const DrawInfo *settings, const ssize_t x, const ssize_t y, const PixelInfo *target, const MagickBooleanType invert, ExceptionInfo **exception)
+{
+  MAGICK_NATIVE_GET_EXCEPTION;
+  FloodfillPaintImage(instance, settings, target, x, y, invert, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+}
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Flop(const Image *instance, ExceptionInfo **exception)
 {
@@ -1372,20 +1372,20 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Flop(const Image *instance, ExceptionInf
   return image;
 }
 
-// MAGICK_NATIVE_EXPORT TypeMetric *MagickImage_FontTypeMetrics(Image *instance, const DrawInfo *settings, const MagickBooleanType ignoreNewLines, ExceptionInfo **exception)
-// {
-//   TypeMetric
-//     *result;
+MAGICK_NATIVE_EXPORT TypeMetric *MagickImage_FontTypeMetrics(Image *instance, const DrawInfo *settings, const MagickBooleanType ignoreNewLines, ExceptionInfo **exception)
+{
+  TypeMetric
+    *result;
 
-//   result = TypeMetric_Create();
-//   MAGICK_NATIVE_GET_EXCEPTION;
-//   if (ignoreNewLines != MagickFalse)
-//     GetTypeMetrics(instance, settings, result, exceptionInfo);
-//   else
-//     GetMultilineTypeMetrics(instance, settings, result, exceptionInfo);
-//   MAGICK_NATIVE_SET_EXCEPTION;
-//   return result;
-// }
+  result = TypeMetric_Create();
+  MAGICK_NATIVE_GET_EXCEPTION;
+  if (ignoreNewLines != MagickFalse)
+    GetTypeMetrics(instance, settings, result, exceptionInfo);
+  else
+    GetMultilineTypeMetrics(instance, settings, result, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+  return result;
+}
 
 MAGICK_NATIVE_EXPORT char *MagickImage_FormatExpression(Image *instance, ImageInfo *settings, const char *expression, ExceptionInfo **exception)
 {
@@ -1897,16 +1897,16 @@ MAGICK_NATIVE_EXPORT void MagickImage_Quantize(Image *instance, const QuantizeIn
   MAGICK_NATIVE_SET_EXCEPTION;
 }
 
-// MAGICK_NATIVE_EXPORT Image *MagickImage_Polaroid(Image *instance, const DrawInfo *settings, const char *caption, const double angle, const size_t method, ExceptionInfo **exception)
-// {
-//   Image
-//     *image;
+MAGICK_NATIVE_EXPORT Image *MagickImage_Polaroid(Image *instance, const DrawInfo *settings, const char *caption, const double angle, const size_t method, ExceptionInfo **exception)
+{
+  Image
+    *image;
 
-//   MAGICK_NATIVE_GET_EXCEPTION;
-//   image = PolaroidImage(instance, settings, caption, angle, (const PixelInterpolateMethod) method, exceptionInfo);
-//   MAGICK_NATIVE_SET_EXCEPTION;
-//   return image;
-// }
+  MAGICK_NATIVE_GET_EXCEPTION;
+  image = PolaroidImage(instance, settings, caption, angle, (const PixelInterpolateMethod) method, exceptionInfo);
+  MAGICK_NATIVE_SET_EXCEPTION;
+  return image;
+}
 
 MAGICK_NATIVE_EXPORT void MagickImage_Posterize(Image *instance, const size_t levels, const size_t method, const size_t channels, ExceptionInfo **exception)
 {

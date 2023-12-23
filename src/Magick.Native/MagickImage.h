@@ -158,9 +158,9 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_AddNoise(Image *, const size_t, const do
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_AffineTransform(Image *, const double, const double, const double, const double, const double, const double, ExceptionInfo **);
 
-// MAGICK_NATIVE_EXPORT void MagickImage_Annotate(Image *, const DrawInfo *, char *, char *, const size_t, const double, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_Annotate(Image *, const DrawInfo *, char *, char *, const size_t, const double, ExceptionInfo **);
 
-// MAGICK_NATIVE_EXPORT void MagickImage_AnnotateGravity(Image *, const DrawInfo *, char *, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_AnnotateGravity(Image *, const DrawInfo *, char *, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_AutoGamma(Image *, const size_t, ExceptionInfo **);
 
@@ -270,11 +270,11 @@ MAGICK_NATIVE_EXPORT Image *MagickImage_Extent(const Image *, const char *, cons
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Flip(const Image *, ExceptionInfo **);
 
-// MAGICK_NATIVE_EXPORT void MagickImage_FloodFill(Image *, const DrawInfo *, const ssize_t, const ssize_t, const PixelInfo *, const MagickBooleanType, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT void MagickImage_FloodFill(Image *, const DrawInfo *, const ssize_t, const ssize_t, const PixelInfo *, const MagickBooleanType, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT Image *MagickImage_Flop(const Image *, ExceptionInfo **);
 
-// MAGICK_NATIVE_EXPORT TypeMetric *MagickImage_FontTypeMetrics(Image *, const DrawInfo *, const MagickBooleanType, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT TypeMetric *MagickImage_FontTypeMetrics(Image *, const DrawInfo *, const MagickBooleanType, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT char *MagickImage_FormatExpression(Image *, ImageInfo *, const char *, ExceptionInfo **);
 
@@ -376,7 +376,7 @@ MAGICK_NATIVE_EXPORT ChannelPerceptualHash *MagickImage_PerceptualHash(const Ima
 
 MAGICK_NATIVE_EXPORT void MagickImage_Quantize(Image *, const QuantizeInfo *, ExceptionInfo **);
 
-// MAGICK_NATIVE_EXPORT Image *MagickImage_Polaroid(Image *, const DrawInfo *, const char *, const double, const size_t, ExceptionInfo **);
+MAGICK_NATIVE_EXPORT Image *MagickImage_Polaroid(Image *, const DrawInfo *, const char *, const double, const size_t, ExceptionInfo **);
 
 MAGICK_NATIVE_EXPORT void MagickImage_Posterize(Image *, const size_t, const size_t, const size_t, ExceptionInfo **);
 
