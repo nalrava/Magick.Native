@@ -16,3 +16,4 @@ src/create-type-definition/node_modules
 *.aps
 *.log
 *.user
+artifacts/*

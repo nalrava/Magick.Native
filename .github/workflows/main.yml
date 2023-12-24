@@ -21,6 +21,14 @@ jobs:
       with:
         fetch-depth: 1
 
+    - name: Set permission all sh files
+      if: ${{ env.ACT }}
+      run: |
+        chmod +x build/wasm-x86/*.sh
+        chmod +x build/libraries/*.sh
+        chmod +x build/shared/*.sh
+        chmod +x src/ImageMagick/*.sh
+
     - name: Install dependencies
       run: ./install.dependencies.sh
       working-directory: build/wasm-x86

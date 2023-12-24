@@ -1,0 +1,1 @@
+act --artifact-server-path ./artifacts
