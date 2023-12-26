@@ -65,5 +65,5 @@ jobs:
     - name: Upload library
       uses: actions/upload-artifact@v3
       with:
-        name: wasm
+        name: wasm-x86
         path: artifacts
