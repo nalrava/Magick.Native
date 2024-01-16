@@ -13,7 +13,7 @@ export class TypeDefinitionWriter {
 export type quantumArray = Uint8Array;
 
 /** @internal */
-export type stream = {};
+export interface FileStream {}
 
 /** @internal */
 export interface PathInfo {
@@ -23,10 +23,10 @@ export interface PathInfo {
 /** @internal */
 export interface VirtualFileSystem {
     analyzePath(path: string): PathInfo;
-    close(stream: stream): void;
+    close(stream: FileStream): void;
     mkdir(path: string): void;
-    open(path: string, mode: string): stream;
-    write(stream: stream, buffer: Uint8Array, offset: number, length: number): void;
+    open(path: string, mode: string): FileStream;
+    write(stream: FileStream, buffer: Uint8Array, offset: number, length: number): void;
 }
 
 /** @internal */

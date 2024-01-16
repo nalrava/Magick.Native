@@ -1,0 +1,18 @@
+{
+  "name": "wasm-file-creator",
+  "version": "1.0.0",
+  "description": "Create wasm files",
+  "repository": "https://github.com/dlemstra/Magick.Native",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p .",
+    "publish": "tsc -p . && node lib/index.js ../Magick.Native ../Magick.Native/Q8"
+  },
+  "keywords": [],
+  "author": "Dirk Lemstra",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/node": "20.11.0",
+    "typescript": "5.3.3"
+  }
+}
